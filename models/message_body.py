@@ -14,3 +14,12 @@ class MessageBody(db.model):
         self.body_plaintext = body_plaintext
         self.body_html = body_html
         self.title = title
+
+    @property
+    def serialize(self):
+        return {
+            'id': self.id,
+            'body_plaintext': self.body_plaintext,
+            'body_html': self.body_html,
+            'title': self.title
+        }
