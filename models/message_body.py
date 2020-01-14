@@ -2,7 +2,7 @@ from sqlalchemy import Column, Integer, Text, String
 from app import db
 
 
-class MessageBody(db.model):
+class MessageBody(db.Model):
     __tablename__ = 'messages_body'
 
     id = Column(Integer, primary_key=True)
