@@ -14,16 +14,21 @@ def create_app(config_filename='settings', check_db=True):
     app = Flask(__name__, template_folder='templates')
     app.config.from_object(config_filename)
 
+    # database
     migrate = Migrate(app, db)
     db.init_app(app)
 
     if check_db and not database_exists(app.config.get('SQLALCHEMY_DATABASE_URI')):
         create_db(True)
 
+    # routes
     from routes import main, message, message_body
     app.register_blueprint(main.main)
     app.register_blueprint(message.message)
     app.register_blueprint(message_body.body)
+
+    # mail
+    mail.init_app(app)
 
     return app
 
