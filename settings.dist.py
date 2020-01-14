@@ -1,5 +1,7 @@
+ENV = 'development'
+
 # flask mail settings
-MAIL_DEFAULT_SENDER = 'bok@metrointernet.pl'
+MAIL_DEFAULT_SENDER = 'sender@localhost'
 
 # project settings
 PROJECT_PASSWORD_HASH_METHOD = 'pbkdf2:sha1'
@@ -16,3 +18,5 @@ MAIL_USERNAME = 'no-reply@localhost'
 MAIL_PASSWORD = '$3cREt'
 MAIL_USE_TLS = False
 MAIL_DEBUG = False
+
+MAIL_SEND_DELAY = 300  # time in ms between query fetch. Default 300ms
