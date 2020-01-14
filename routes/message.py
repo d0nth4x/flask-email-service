@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify, current_app, request, abort
 from sqlalchemy import desc
 from app import db
 
-from models.messages import Message
+from models.messages import Message, MessageBody
 
 message = Blueprint('message', __name__)
 
@@ -22,7 +22,11 @@ def get_all():
 
 
 @message.route('/message', methods=['POST'])
-def insert():
+def create():
+
+    # if MessageBody.query.get(request.json["body"]):
+
+
     try:
         msg = Message(
             body=request.json['body'],
